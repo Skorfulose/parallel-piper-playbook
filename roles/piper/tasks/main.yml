@@ -5,6 +5,7 @@
   with_items:
     - npm
     - nodejs-legacy
+  become: true
 
 - name: Clone repository
   git:
