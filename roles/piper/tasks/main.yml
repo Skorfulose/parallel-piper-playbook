@@ -1,7 +1,10 @@
 - name: Install prerequisites
   package:
-    name: npm
+    name: {{ item }}
     state: latest
+  with_items:
+    - npm
+    - nodejs-legacy
 
 - name: Clone repository
   git:
