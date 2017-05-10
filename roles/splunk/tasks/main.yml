@@ -1,0 +1,48 @@
+- name: Create splunk group
+  group:
+    name: splunk
+    system: yes
+    state: present
+  become: yes
+
+- name: Create splunk user
+  user:
+    name: splunk
+    system: yes
+    createhome: no
+    shell: /usr/sbin/nologin
+    group: splunk
+    state: present
+  become: yes
+
+- name: Download Splunk
+  get_url:
+    url: https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.6.0&product=splunk&filename=splunk-6.6.0-1c4f3bbe1aea-Linux-x86_64.tgz&wget=true
+    dest: /tmp/splunk-6.6.0-1c4f3bbe1aea-Linux-x86_64.tgz
+  
+- name: Install Splunk
+  unarchive:
+    src: /tmp/splunk-6.6.0-1c4f3bbe1aea-Linux-x86_64.tgz
+    dest: /opt/
+    remote_src: yes
+    owner: splunk
+    group: splunk
+  become: yes
+
+- name: Accept license and start Splunk
+  shell: /opt/splunk/bin/splunk restart --accept-license --answer-yes
+  become: yes
+  become_user: splunk
+
+- name: Enable boot-start
+  shell: /opt/splunk/bin/splunk enable boot-start
+  become: yes
+
+- name: Enable HTTP Event Collector
+  copy:
+    src: inputs.conf
+    dest: /opt/splunk/etc/apps/splunk_httpinput/local/inputs.conf
+    owner: splunk
+    group: splunk
+    mode: 0600
+  become: true
