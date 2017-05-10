@@ -2,5 +2,12 @@
   roles:
     - role: common
     - role: geerlingguy.nginx
+      nginx_remove_default_vhost: yes
+      nginx_vhosts:
+        - listen: "80 default_server"
+          server_name: "example.com"
+          root: "/src/parallel-piper/dist"
+          index: "index.html"
+      become: true
     - role: splunk
     - role: piper
