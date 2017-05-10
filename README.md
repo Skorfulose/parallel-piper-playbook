@@ -19,7 +19,17 @@ Run playbook
 
 ```sh
 ansible-playbook aio_install.yml -i "<insert_your_fqdn_here>,"
-````
+```
+
+## Firewall
+
+Following ports need to be allowed inbound:
+
+Source | Destination | Service | Action
+Any | Any | HTTP (TCP/80) | Allow
+Any | Any | Splunk Web (TCP/8000) | Allow
+Any | Any | Splunk HTTP Event Collector (TCP/8088) | Allow
+
 
 ---
 
