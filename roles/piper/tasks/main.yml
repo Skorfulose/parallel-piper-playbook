@@ -7,6 +7,13 @@
     - nodejs-legacy
   become: true
 
+- name: Create /src directory
+  file:
+    path: /src
+    state: directory
+    mode: 0666
+  become: true
+
 - name: Clone repository
   git:
     repo: 'https://github.com/Skorfulose/parallel-piper.git'
