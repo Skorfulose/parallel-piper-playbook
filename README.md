@@ -15,6 +15,12 @@ Install required roles from Ansible Galaxy
 sudo ansible-galaxy install -r requirements.yml
 ```
 
+Run playbook
+
+```sh
+ansible-playbook aio_install.yml -i "<insert_your_fqdn_here>,"
+````
+
 ---
 
 Thomas Redmer (2017)

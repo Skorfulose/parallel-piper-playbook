@@ -1,4 +1,4 @@
-- hosts: aio
+- hosts: all
   roles:
     - role: common
     - role: geerlingguy.nginx
