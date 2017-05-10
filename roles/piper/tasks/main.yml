@@ -21,11 +21,11 @@
     force: yes
 
 - name: Install node dependencies
-  npm:
-    path: /src/parallel-piper
-    state: latest
+  command: npm install
+  args:
+    chdir: /src/parallel-piper/
 
 - name: Run webpack build
-  command: build.sh
+  command: sh build.sh
   args:
     chdir: /src/parallel-piper/
