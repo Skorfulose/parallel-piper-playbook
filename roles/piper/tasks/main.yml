@@ -1,6 +1,6 @@
 - name: Install prerequisites
   package:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
   with_items:
     - npm
