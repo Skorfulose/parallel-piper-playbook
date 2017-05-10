@@ -11,7 +11,7 @@
   file:
     path: /src
     state: directory
-    mode: 0666
+    mode: 0777
   become: true
 
 - name: Clone repository
