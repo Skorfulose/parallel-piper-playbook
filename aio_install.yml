@@ -1,0 +1,6 @@
+- hosts: aio
+  roles:
+    - role: common
+    - role: geerlingguy.nginx
+    - role: splunk
+    - role: piper
