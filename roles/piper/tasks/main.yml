@@ -1,0 +1,20 @@
+- name: Install prerequisites
+  package:
+    name: npm
+    state: latest
+
+- name: Clone repository
+  git:
+    repo: 'https://github.com/Skorfulose/parallel-piper.git'
+    dest: /src/parallel-piper
+    force: yes
+
+- name: Install node dependencies
+  npm:
+    path: /src/parallel-piper
+    state: latest
+
+- name: Run webpack build
+  command: build.sh
+  args:
+    chdir: /src/parallel-piper/
