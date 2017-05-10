@@ -5,7 +5,7 @@
       nginx_remove_default_vhost: yes
       nginx_vhosts:
         - listen: "80 default_server"
-          server_name: "example.com"
+          server_name: "{{server_name}}"
           root: "/src/parallel-piper/dist"
           index: "index.html"
       become: true

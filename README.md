@@ -18,7 +18,7 @@ sudo ansible-galaxy install -r requirements.yml
 Run playbook
 
 ```sh
-ansible-playbook aio_install.yml -i "<insert_your_fqdn_here>,"
+ansible-playbook aio_install.yml -i "<insert_your_fqdn_here>," --extra-vars "server_name=<insert_your_fqdn_here>"
 ```
 
 ## Firewall
