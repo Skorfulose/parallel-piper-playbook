@@ -30,7 +30,6 @@ Any | Any | HTTP (TCP/80) | Allow
 Any | Any | Splunk Web (TCP/8000) | Allow
 Any | Any | Splunk HTTP Event Collector (TCP/8088) | Allow
 
-
 ---
 
 Thomas Redmer (2017)
