@@ -4,7 +4,7 @@ Ansible Playbook for an all-in-one Parallel Piper / Splunk deployment. Parallel 
 
 ## Prerequisites
 
-* Ansible installation (`sudo apt install ansible`)
+* Ansible installation (Ubuntu: `sudo apt install ansible` / Mac OS: `brew install ansible`)
 * SSH access to a fresh Debian/Ubuntu server
 
 ## Playbook Usage
