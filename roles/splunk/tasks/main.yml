@@ -35,7 +35,7 @@
   become_user: splunk
 
 - name: Enable boot-start
-  shell: /opt/splunk/bin/splunk enable boot-start
+  shell: /opt/splunk/bin/splunk enable boot-start -user splunk
   become: yes
 
 - name: Enable HTTP Event Collector
