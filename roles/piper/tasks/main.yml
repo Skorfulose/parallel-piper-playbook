@@ -29,3 +29,7 @@
   command: sh build.sh
   args:
     chdir: /src/parallel-piper/
+
+- name: Copy webapp to webroot
+  command: mv /src/parallel-piper/dist/* /var/www/html
+  become: true

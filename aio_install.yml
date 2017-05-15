@@ -4,10 +4,23 @@
     - role: geerlingguy.nginx
       nginx_remove_default_vhost: yes
       nginx_vhosts:
+        
         - listen: "80 default_server"
           server_name: "{{server_name}}"
-          root: "/src/parallel-piper/dist"
+          root: "/var/www/html"
           index: "index.html"
+          extra_parameters: |
+            listen 443 ssl;
+            ssl_certificate /etc/letsencrypt/live/{{server_name}}/fullchain.pem;
+            ssl_certificate_key /etc/letsencrypt/live/{{server_name}}/privkey.pem;
+            location /.well-known {
+                try_files $uri $uri/ =404;
+            }
+            location / {
+                if ($scheme = http) {
+                    return 301 https://$host$request_uri;
+                }
+            }
       become: true
     - role: splunk
     - role: piper
