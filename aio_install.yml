@@ -1,6 +1,11 @@
 - hosts: all
   roles:
     - role: common
+    - role: thefinn93.letsencrypt
+      letsencrypt_webroot_path: /var/www/html
+      letsencrypt_email: "{{email}}"
+      letsencrypt_cert_domains: "{{server_name}}"
+      letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
     - role: geerlingguy.nginx
       nginx_remove_default_vhost: yes
       nginx_vhosts:
